@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome — Beautiful Landing</title>
+  <style>
+    :root{
+      --bg1: #0f172a;
+      --bg2: #0f3b6e;
+      --accent: #7c3aed;
+      --glass: rgba(255,255,255,0.06);
+      --glass-2: rgba(255,255,255,0.04);
+      --text: #e6eef8;
+      --muted: rgba(230,238,248,0.7);
+      --radius: 18px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(135deg,var(--bg1),var(--bg2));color:var(--text);}
+
+    .wrap{
+      min-height:100vh;display:grid;place-items:center;padding:48px 24px;
+    }
+
+    .card{
+      width:100%;max-width:1100px;border-radius:var(--radius);padding:48px;position:relative;overflow:hidden;
+      background:linear-gradient(180deg,var(--glass),transparent);
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+      display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center;
+    }
+
+    /* animated blurred shapes */
+    .blob{
+      position:absolute;border-radius:50%;filter:blur(60px);opacity:0.6;transform:translate(-10%,-10%);
+    }
+    .blob.a{width:420px;height:420px;right:-120px;top:-80px;background:linear-gradient(45deg,#7c3aed33,#00d4ff33);}
+    .blob.b{width:320px;height:320px;left:-100px;bottom:-80px;background:linear-gradient(45deg,#ff6b6b22,#ffd86b22);}
+
+    /* left content */
+    .left h1{font-size:44px;margin:0 0 12px 0;line-height:1.02;letter-spacing:-0.6px}
+    .left p{color:var(--muted);margin:0 0 24px 0;font-size:16px}
+
+    .cta-row{display:flex;gap:12px;align-items:center}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;font-weight:600;text-decoration:none;border:none;cursor:pointer;backdrop-filter:blur(6px);
+    }
+    .btn.primary{background:linear-gradient(90deg,var(--accent),#1fb6ff);color:white;box-shadow:0 8px 20px rgba(124,58,237,0.24);}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
+
+    .features{display:flex;gap:12px;margin-top:18px}
+    .feature{background:var(--glass-2);padding:12px;border-radius:12px;font-size:13px;color:var(--muted);display:flex;gap:10px;align-items:center}
+
+    /* right preview card */
+    .preview{
+      height:320px;border-radius:14px;padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));border:1px solid rgba(255,255,255,0.03);
+      display:flex;flex-direction:column;gap:12px;justify-content:center;align-items:center;position:relative;overflow:hidden;
+    }
+    .preview .logo{width:68px;height:68px;border-radius:14px;background:linear-gradient(135deg,#7c3aed,#1fb6ff);display:grid;place-items:center;font-weight:700;color:white;font-size:20px}
+    .preview h3{margin:0}
+    .preview p{margin:0;color:var(--muted);text-align:center}
+
+    /* subtle animated shine */
+    .shimmer{position:absolute;left:-40%;top:0;width:60%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,0.06),transparent);transform:skewX(-20deg);animation:shine 6s linear infinite}
+    @keyframes shine{0%{left:-40%}50%{left:120%}100%{left:-40%}}
+
+    /* responsive */
+    @media (max-width:900px){
+      .card{grid-template-columns:1fr; padding:28px;}
+      .preview{height:220px}
+      .left h1{font-size:32px}
+    }
+
+    /* tiny entrance */
+    .card{transform:translateY(8px);opacity:0;animation:enter 700ms ease-out forwards}
+    @keyframes enter{to{transform:none;opacity:1}}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" role="region" aria-label="Welcome card">
+      <div class="blob a" aria-hidden="true"></div>
+      <div class="blob b" aria-hidden="true"></div>
+
+      <div class="left">
+        <h1>Welcome — Glad you're here ✨</h1>
+        <p>Beautiful, minimal and responsive welcome page. Built for quick demos, onboarding screens, or a friendly landing hero. Edit the text, colors, and image to match your brand.</p>
+
+        <div class="cta-row">
+          <a class="btn primary" href="#get-started">Get started</a>
+          <a class="btn ghost" href="#learn-more">Learn more</a>
+        </div>
+
+        <div class="features" aria-hidden="true">
+          <div class="feature">🚀 Fast & lightweight</div>
+          <div class="feature">⚡ Responsive</div>
+          <div class="feature">🎨 Modern look</div>
+        </div>
+      </div>
+
+      <aside class="preview" aria-hidden="true">
+        <div class="logo">W</div>
+        <h3>Welcome Hub</h3>
+        <p>Ready-made hero layout to say hello in style. Use it in any static site or convert to a component.</p>
+        <div class="shimmer" aria-hidden="true"></div>
+      </aside>
+    </div>
+  </div>
+</body>
+</html>
